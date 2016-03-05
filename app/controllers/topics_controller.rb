@@ -29,6 +29,12 @@ class TopicsController < ApplicationController
     end
   end
 
+  def destroy
+    @topic = Topic.find(params[:id])
+    @topic.destroy
+    redirect_to topics_path
+  end
+
   def show
     @topic = Topic.find(params[:id])
   end
@@ -42,6 +48,4 @@ class TopicsController < ApplicationController
     params.require(:topic).permit(:title, :author, :content)
   end
 
-  #def create_comment
-  #end
 end
