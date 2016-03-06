@@ -17,11 +17,14 @@ ActiveRecord::Schema.define(version: 20160305182212) do
   enable_extension "plpgsql"
 
   create_table "comments", force: :cascade do |t|
-    t.text     "text"
     t.string   "author"
+    t.text     "text"
+    t.integer  "topic_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
+
+  add_index "comments", ["topic_id"], name: "index_comments_on_topic_id", using: :btree
 
   create_table "pages", force: :cascade do |t|
     t.datetime "created_at", null: false
@@ -36,4 +39,5 @@ ActiveRecord::Schema.define(version: 20160305182212) do
     t.datetime "updated_at", null: false
   end
 
+  add_foreign_key "comments", "topics"
 end

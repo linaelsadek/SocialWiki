@@ -1,0 +1,14 @@
+ <p>
+    <strong>Commenter:</strong>
+    <%= comment.author %>
+  </p>
+
+  <p>
+    <strong>Comment:</strong>
+    <%= comment.text %>
+  </p>
+
+  <p>
+    <%= link_to 'Delete comment', [comment.topic, comment], method: :delete,
+     data: { confirm: 'Are you sure you want to delete this comment?'} %>
+  </p>
