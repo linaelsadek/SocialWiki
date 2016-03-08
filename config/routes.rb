@@ -1,7 +1,12 @@
 Rails.application.routes.draw do
   root to: 'pages#home'
   resources :topics do 
-    resources :comments
+    resources :comments do
+      member do
+        post 'upvote'
+        post 'downvote'
+      end
+    end
   end
 
   #creates a new topic
