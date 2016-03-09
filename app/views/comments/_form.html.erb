@@ -1,0 +1,15 @@
+<%= form_for([@topic, @topic.comments.build]) do |t| %>
+  <p>
+    <%= t.label :author %><br>
+    <%= t.text_field :author %>
+  </p>
+
+  <p>
+    <%= t.label :text %><br>
+    <%= t.text_area :text %>
+  </p>
+
+  <p>
+    <%= t.submit%>
+  </p>
+<% end %>
