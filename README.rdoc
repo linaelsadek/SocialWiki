@@ -6,6 +6,7 @@ Milestone 2 requirements and roles:
    
 To Do:
    - Display error message for comments, when invalid input gets detected
+   - Edit Comment
    - Login/Logout/sign up options
    - Add filter for how to view comments
    - Add "follow link"
