@@ -1,3 +1,13 @@
+
+Milestone 2 requirements and roles:
+   - Sougal: Create/List/delete/edit a Topic
+   - Lina: Create/delete a Comment in Topic
+   - Martin: Create Votes (up/down) for a Comment
+   
+
+
+For Milestone 3, we plan on adding authentication (sign in/out, and sign up), in addition to, adding a "Follow link"
+
 == README
 
 This README would normally document whatever steps are necessary to get the
