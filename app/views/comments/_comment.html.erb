@@ -1,17 +1,22 @@
- <p>
-    <strong>Commenter:</strong>
-    <%= comment.author %>
-  </p>
+<table style="table-layout: fixed; width: 75%">
+  <tr>
+    <td style="width: 10%"> <%= button_to 'UpVote', upvote_topic_comment_path(comment.topic, comment), method: :post%> 
+    </td>
+    <td> 
+      <%= comment.text %>
+    </td> 
+  </tr>
+  <tr>
+    <td> <%= pluralize(comment.votes.count, "vote") %> </td>
+  </tr>
+  <tr>
+    <td> <%= button_to 'DownVote', downvote_topic_comment_path(comment.topic, comment), method: :post%> </td>
+    <td></td>
+    <td> <%= comment.author %> </td>
+  </tr>
+  <tr>
+    <td><%= button_to 'Delete comment', [comment.topic, comment], method: :delete,
+     data: { confirm: 'Are you sure you want to delete this comment?'} %><br><br> </td>
+  </tr>
+ </table>
 
-  <p>
-    <strong>Comment:</strong>
-    <%= comment.text %>
-  </p>
-
-  <p>
-    <%= pluralize(comment.votes.count, "vote") %>
-    <%= button_to 'UpVote', upvote_topic_comment_path(comment.topic, comment), method: :post%>
-    <%= button_to 'DownVote', downvote_topic_comment_path(comment.topic, comment), method: :post%>
-    <%= button_to 'Delete comment', [comment.topic, comment], method: :delete,
-     data: { confirm: 'Are you sure you want to delete this comment?'} %>  
-  </p>
