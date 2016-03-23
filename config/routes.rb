@@ -12,7 +12,7 @@ Rails.application.routes.draw do
   post 'login' => 'sessions#create'
   delete 'logout' => 'sessions#destroy'
   resources :users
-
+  resources :account_activations, only: [:edit]
   resources :topics do 
     resources :comments do
       member do
