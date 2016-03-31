@@ -17,14 +17,15 @@ ActiveRecord::Schema.define(version: 20160329214826) do
   enable_extension "plpgsql"
 
   create_table "comments", force: :cascade do |t|
-    t.string   "author"
+    t.integer  "user_id"
     t.text     "text"
     t.integer  "topic_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
-  add_index "comments", ["topic_id"], name: "index_comments_on_topic_id", using: :btree
+  add_index "comments", ["topic_id", "user_id", "created_at"], name: "index_comments_on_topic_id_and_user_id_and_created_at", using: :btree
+  add_index "comments", ["topic_id", "user_id"], name: "index_comments_on_topic_id_and_user_id", using: :btree
 
   create_table "microposts", force: :cascade do |t|
     t.text     "content"
@@ -55,11 +56,14 @@ ActiveRecord::Schema.define(version: 20160329214826) do
 
   create_table "topics", force: :cascade do |t|
     t.string   "title"
-    t.string   "author"
     t.text     "content"
+    t.integer  "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
+
+  add_index "topics", ["user_id", "created_at"], name: "index_topics_on_user_id_and_created_at", using: :btree
+  add_index "topics", ["user_id"], name: "index_topics_on_user_id", using: :btree
 
   create_table "users", force: :cascade do |t|
     t.string   "name"

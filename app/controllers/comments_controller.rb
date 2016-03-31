@@ -1,8 +1,23 @@
 class CommentsController < ApplicationController
+  before_action :logged_in_user, only: [:create, :destroy]
+  
   def create
     @topic = Topic.find(params[:topic_id])
-    @comment = @topic.comments.create(comment_params)
-    redirect_to topic_path(@topic)
+    @comments = @topic.comments
+
+    @comment = current_user.comments.build(comment_params)
+    @comment.topic = @topic
+
+    if @comment.save
+      flash[:notice] = "Comment was created."
+      redirect_to topic_path(@topic)
+    else
+      flash[:error] = "There was an error saving the comment. Please try again."
+      redirect_to topic_path(@topic)
+    end
+
+    #@comment = @topic.comments.create(comment_params)
+    #redirect_to topic_path(@topic)
   end
 
   def destroy
@@ -28,6 +43,6 @@ class CommentsController < ApplicationController
   
   private
   def comment_params
-    params.require(:comment).permit(:author, :text)
+    params.require(:comment).permit(:text, :topic_id)
   end
 end
