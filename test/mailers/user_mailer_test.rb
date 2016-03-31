@@ -2,7 +2,7 @@ require 'test_helper'
 
 class UserMailerTest < ActionMailer::TestCase
   test "account_activation" do
-    user = User.first
+    user = users(:lina)
     user.activation_token = User.new_token
     mail = UserMailer.account_activation(user)
     assert_equal "Socialwiki Account Activation", mail.subject
@@ -12,7 +12,7 @@ class UserMailerTest < ActionMailer::TestCase
   end
 
   test "password_reset" do
-    user = User.first
+    user = users(:lina)
     user.activation_token = User.new_token
     mail = UserMailer.password_reset(user)
     assert_equal "Password reset", mail.subject
