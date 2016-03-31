@@ -7,7 +7,7 @@ class PasswordResetsControllerTest < ActionController::TestCase
   end
 
   test "should get edit" do
-    get :edit
+    get :edit, id: 2
     assert_response :success
   end
 
