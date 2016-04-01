@@ -45,10 +45,3 @@ users = User.order(:created_at).take(6)
   content = Faker::Commerce.product_name
   users.each { |user| user.topics.create!(content: content) }
 end
-
-users = User.order(:created_at).take(6)
-50.times do
-  #content = Faker::Lorem.sentence(5) 
-  content = Faker::Commerce.product_name
-  users.each { |user| user.topics.comments.create!(content: content) }
-end
