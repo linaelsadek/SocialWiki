@@ -12,7 +12,9 @@ gems used
 
 add-on to heroku:
 sendgrid --> sends account_activation + password_reset emails
-====================================================================
+
+
+
 features implemented:
 
 1) signup/resetpassword --> both of which send an email to your email to verify the option
