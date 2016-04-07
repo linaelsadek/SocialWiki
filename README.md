@@ -1,6 +1,7 @@
 # socialWiki
 
-gems used...
+gems used
+
 1) bootstrap-sass --> open-source web design framework from Twitter
 2) bcrypt --> encryption of password
 3) faker --> generates fake information such as users, and statuses
