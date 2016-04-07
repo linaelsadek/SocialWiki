@@ -1,5 +1,7 @@
 class TopicsController < ApplicationController
   #has_many :comments
+  before_action :logged_in_user, only: [:create, :destroy]
+  before_action :correct_user, only: :destroy
   
   def new
     @topic = Topic.new
@@ -7,9 +9,12 @@ class TopicsController < ApplicationController
 
   def create
     #render plain: params[:topic].inspect
-    @topic = Topic.new(topic_params)
+    #@topic = Topic.new(topic_params)
+    @topic = current_user.topics.build(topic_params)
     if @topic.save
-      redirect_to @topic
+      #redirect_to @topic
+      flash[:success] = "Dicscussion topics created!"
+      redirect_to root_url
     else
       render 'new'
     end
@@ -45,7 +50,12 @@ class TopicsController < ApplicationController
 
   private
   def topic_params
-    params.require(:topic).permit(:title, :author, :content)
+    params.require(:topic).permit(:title, :content)
+  end
+
+  def correct_user
+    @topic = current_user.topics.find_by(id: params[:id])
+    redirect_to root_url if @topic.nil?
   end
 
 end

@@ -11,7 +11,7 @@
   <% @topics.each do |topic| %>
     <tr>
       <td><%= topic.title %></td>
-      <td><%= topic.author %></td>
+      <td><%= link_to topic.user.name, topic.user %></td>
       <!-- <td><%= topic.content %></td> -->
       <td><%= link_to 'show', topic_path(topic) %></td>
       <td><%= link_to 'Edit', edit_topic_path(topic) %></td>

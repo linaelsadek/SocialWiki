@@ -2,10 +2,10 @@
 
 one:
   title: MyString
-  author: MyString
+  user_id: 
   content: MyText
 
 two:
   title: MyString
-  author: MyString
+  user_id: 
   content: MyText
